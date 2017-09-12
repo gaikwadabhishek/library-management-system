@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
-
-<ul>
-	{% for book in all_book %}
-	<li><a href ="/librarian/books/{{ book.book_id }}/">{{ book.title }}<h1>some thing here</h1></a></li>
-	{% endfor %}
-
-</ul>
+{% block content %}
+<table style="width:100%; font-size:32px;">
+  <tr>
+  	<th><strong>ID</strong></th>
+    <th><strong>Title</strong></th>
+    <th><strong>Author</strong></th> 
+    <th><strong>Publication</strong></th>
+    <th><strong>Status</strong></th>
+  </tr>
+  {% for book in all_book %}
+  <tr>
+  	<td>{{book.book_id}}</td>
+  	<td><a href ="/librarian/books/{{ book.book_id }}/">{{book.title}}</a></td>
+  	<td>{{book.author}}</td>
+  	<td>{{book.publisher}}</td>
+  	<td>{{book.status}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

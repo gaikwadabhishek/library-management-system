@@ -1,6 +1,7 @@
 body {
     background: white url("images/background1.jpg");
 	font-family: 'Source Sans Pro',sans-serif;
+    font-size:24px;
 }
 .navbar{
 	border-radius: 0;
@@ -33,4 +34,8 @@ body {
 .button1:hover {
     background-color: white; 
     color: black; 
+}
+
+tr {
+    border: 1px solid black;
 }

@@ -46,9 +46,9 @@ class Book(models.Model):
     status= models.CharField(max_length=1, choices=LOAN_STATUS, default='a', help_text='Book availability')
 
     '''def get_absolute_url(self):
-        """
+        
         Returns the url to access a particular book instance.
-        """
+        
         return reverse('book-detail', args=[str(self.book_id)])'''
 
     def __str__(self):

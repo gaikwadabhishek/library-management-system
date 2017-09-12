@@ -26,6 +26,8 @@ def addbook_success(request):
 def addstudent_success(request):
     return render(request,'addstudent_success.html')
 
+def issuebook_success(request):
+	return render(request,'issuebook_success.html')
 
 def signup(request):
 	if request.method == 'POST':
@@ -93,7 +95,14 @@ def issuebook(request):
 			cd = form.cleaned_data
 			book = cd.get('book')
 			borrower = cd.get('borrower')
+			book.status = 'o'
+			book.student_issued = borrower
+			print(book.student_issued.student_name)
+			book.save()
 			form.save()
+			return redirect('issuebook_success')
+		else:
+			form = IssueBookForm()
 			
 	return render(request,'issuebook.html',{'form':form})
 
@@ -110,14 +119,12 @@ class BookDetailView(generic.DetailView):
     """
     model = Book
 
-def BookDetailView(request, book_id):
+def detail(request, book_id):
     user = request.user
     book = get_object_or_404(Book, pk=book_id)
-    return render(request, 'bookdetails.html', {'book': book})
+    return render(request, 'book-detail.html', {'book': book})
 
 def index(request):
-	all_book = Book.objects.all()
+	all_book = list(Book.objects.all())
+	print(all_book)
 	return render(request,'index.html',{'all_book':all_book})
-
-def detail(request,book_id):
-	return HttpResponse("<h2>Details for Book id :"+str(book_id) + "</h2>")

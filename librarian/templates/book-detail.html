@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Title: {{ book.title }}</h1>
+
+<p><strong>Book ID:</strong> {{ book.book_id }}</p> 
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p><strong>Publisher:</strong> {{ book.publisher }}</p>  
+
+{% if book.status == 'o' %}
+
+<p><strong>Borrower:</strong> {{ book.student_issued.student_name }}</p>  
+{% endif %}
+{% endblock %}

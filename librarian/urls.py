@@ -20,4 +20,5 @@ urlpatterns =[
 	url(r'^signup_success/$', librarian_views.signup_success, name ='signup_success'),
 	url(r'^addbook_success/$', librarian_views.addbook_success, name ='addbook_success'),
 	url(r'^addstudent_success/$', librarian_views.addstudent_success, name ='addstudent_success'),
+	url(r'^issuebook_success/$', librarian_views.issuebook_success, name ='issuebook_success'),
 ]

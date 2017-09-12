@@ -3,7 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 #from phonenumber_field.modelfields import PhoneNumberField
 from django.forms import ModelForm
-from .models import Book,Student,Librarian
+from .models import Book,Student,Librarian,IssueData
+
 class SignUpForm(UserCreationForm):
 	librarian_name = forms.CharField(
 		label='Librarian Name',
@@ -13,7 +14,7 @@ class SignUpForm(UserCreationForm):
 	
 	def __init__(self, *args, **kwargs):
 		super(UserCreationForm, self).__init__(*args, **kwargs)
-		self.fields['username'].help_text = 'Please enter your UserName <strong>Eg:gaikwadabhishek </strong>'
+		self.fields['username'].help_text = 'Please enter your Username <strong>Eg:gaikwadabhishek </strong>'
 
 	class Meta:
 		model = User
@@ -46,8 +47,10 @@ class AddBookForm(forms.ModelForm):
 		model=Book
 		exclude=()
 
-class IssueBookForm(forms.Form):
-	book = forms.CharField(required=True,help_text='Enter Name of the Book')
-	borrower = forms.CharField(required=True,help_text='Enter ID of the Student')
+class IssueBookForm(forms.ModelForm):
+	
+	class Meta:
+		model=IssueData
+		exclude=()
 	
 
