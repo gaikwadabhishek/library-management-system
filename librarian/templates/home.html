@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}        Login{% endblock %}
+{% block content %}
+  <h1>Welcome, {{ user.student.student_name }} (<small>ID: {{ user.username }}</small>)!</h1><hr>
+  <h2> You have successfully created an account and now you can issue books from the departmental library!</h2>
+  <button type="button" onclick="window.location.href='{% url 'addbook' %}' ">Add Book</button>
+  <br><br>
+  <button type="button" onclick="window.location.href='{% url 'addstudent' %}' ">Add Student</button>
+  <br>
+  <br>
+  <button type="button" onclick="window.location.href='{% url 'issuebook' %}' ">Issue Book</button>
+  
+{% endblock %}

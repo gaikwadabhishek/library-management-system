@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+<ul>
+	{% for book in all_book %}
+	<li><a href ="/librarian/books/{{ book.book_id }}/">{{ book.title }}<h1>some thing here</h1></a></li>
+	{% endfor %}
+
+</ul>
